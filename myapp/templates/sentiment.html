@@ -1,0 +1,23 @@
+{% extends "default.html" %}
+
+{% block title %}insert text{% endblock %}
+
+{% block content %}
+
+    <h2>Insert the sentence below:</h2>
+    <form method="post" action="/analyzer">
+        {{form.csrf_token}}
+        <div>{{form.text.label}}:{{form.text}}</div>
+            {% if form.text.errors %}
+            <ul class="error">
+            {% for e in form.text.errors %}
+            <li>{{e}}</li>
+            {% endfor %}
+             </ul>
+            {% endif %}
+
+        <div>{{form.submit}}</div>
+    </form>
+
+
+{% endblock %}
